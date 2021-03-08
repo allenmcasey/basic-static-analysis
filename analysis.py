@@ -20,7 +20,7 @@ def find_uninitialized(func_cfg, func_start_lineno, func_name):
 # create AST from source file
 tree = astor.parse_file(sys.argv[1])
 
-# visit tree nodes, check functions for uninit. vars
+# visit tree nodes, check functions for uninitialized vars
 for node in ast.walk(tree):
     if isinstance(node, ast.FunctionDef):
         find_uninitialized(gen_cfg(astor.to_source(node)), node.lineno, node.name)
